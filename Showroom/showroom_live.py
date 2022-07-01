@@ -2,7 +2,21 @@ import json
 import os
 import requests
 from datetime import datetime
-from Estrapy.base import ObjectConverter
+
+
+class ObjectConverter:
+    def __init__(self, **kwargs):
+        self.json = kwargs
+        for i in self.json.keys():
+            setattr(self, i, self.json[i])
+
+    @classmethod
+    def convert_obj(cls, obj):
+        x = json.loads(obj)
+        return cls(**x)
+
+    def __repr__(self):
+        return f"{self.json}"
 
 
 class ShowroomAPI:
@@ -63,4 +77,7 @@ class ShowroomClient:
             os.system("showroom.bat")
             return {"status": "success", "File": f"Live-{room['room_id']}.mp4"}
 
-        return {"status": "failed", "message": f"{room['room_name']} is not currently live"}
+        return {
+            "status": "failed",
+            "message": f"{room['room_name']} is not currently live",
+        }
