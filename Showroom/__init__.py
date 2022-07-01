@@ -1,5 +1,5 @@
-from showroom_live import *
-from enums import *
+from .showroom_live import *
+from .enums import *
 
 __author__ = "StawaDev"
 __license__ = "MIT"
