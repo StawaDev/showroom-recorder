@@ -69,10 +69,8 @@ class ShowroomClient:
         if check is True:
             url_stream = self.api.get_streaming_url(r_id=room_id)
             open("showroom.bat", "w").close()
-            open("target.txt", "w").close()
-            open("target.txt", "a").write(str(room_id))
             open("showroom.bat", "a").write(
-                f'@echo off \ntitle Showroom - StawaDev. \ncolor 0a \nsetlocal \n:PROMPT \necho [ {self.timestamp} ] - Now Recording. \nffmpeg -loglevel "quiet" -i "{url_stream}" -filter_complex scale=1280:720 -map 0:a -c:a copy -bsf:a aac_adtstoasc "Live-{room["room_id"]}.mp4" \necho Press Q to continue... \nchoice /c q /n /m "Quit? :" \nif %errorlevel%==1 goto Finished \n:Finished \necho [ {self.timestamp} ] - Finished Recording. \npause'
+                f'@echo off \ntitle Showroom-Live Recorder - KalutSan \ncolor 0a \nsetlocal \n:PROMPT \necho [ {self.timestamp} ] - Now Recording. \nffmpeg -loglevel "quiet" -i "{url_stream}" -filter_complex scale=1280:720 -map 0:a -c:a copy -bsf:a aac_adtstoasc "Live-{room["room_id"]}.mp4" \necho Press Q to continue... \nchoice /c q /n /m "Quit? :" \nif %errorlevel%==1 goto Finished \n:Finished \necho [ {self.timestamp} ] - Finished Recording. \npause'
             )
             os.system("showroom.bat")
             return {"status": "success", "File": f"Live-{room['room_id']}.mp4"}
