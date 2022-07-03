@@ -27,3 +27,12 @@ class ShowroomEnums:
         self.Jessica = 318228
         self.Flora = 318224
         self.Gracia = 318208
+        self.Celine = 317752
+        self.Gissele = 400712
+        self.Indira = 400716
+        self.Amanda = 400710
+        self.Callie = 400714
+        self.Lia = 400713
+        self.Ella = 400715
+        self.Lyn = 400717
+        self.Raisha = 400718
